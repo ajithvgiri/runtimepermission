@@ -27,21 +27,26 @@ class MainActivity : AppCompatActivity() {
 
 
         buttonContactPermission.setOnClickListener {
-            askPermissions()
+            askPermissions(PERMISSION_CONTACTS, PERMISSION_REQUEST_CONTACT)
         }
+
+        buttonStoragePermission.setOnClickListener {
+            askPermissions(PERMISSION_STORAGE, PERMISSION_REQUEST_STORAGE)
+        }
+
     }
 
-    private fun askPermissions() {
-        PermissionHandler.checkPermission(this, PERMISSION_CONTACTS) { result ->
+    private fun askPermissions(permissions: Array<String>, requestCode: Int) {
+        PermissionHandler.checkPermission(this, permissions) { result ->
             when (result) {
                 CheckPermissionResult.PermissionGranted -> {
-
+                    showMessage("Permission Granted")
                 }
                 CheckPermissionResult.PermissionAsk -> {
-                    ActivityCompat.requestPermissions(this, PERMISSION_CONTACTS, PERMISSION_REQUEST_CONTACT)
+                    ActivityCompat.requestPermissions(this, permissions, requestCode)
                 }
                 CheckPermissionResult.PermissionPreviouslyDenied -> {
-                    ActivityCompat.requestPermissions(this, PERMISSION_CONTACTS, PERMISSION_REQUEST_CONTACT)
+                    ActivityCompat.requestPermissions(this, permissions, requestCode)
                 }
             }
         }
