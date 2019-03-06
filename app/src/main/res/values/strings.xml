@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">PermissionHandler</string>
+    <string name="single_permission">Single Permission</string>
 </resources>
