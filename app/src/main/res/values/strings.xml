@@ -3,4 +3,7 @@
     <string name="single_permission">Single Permission</string>
     <string name="contact_permission">Contact Permission</string>
     <string name="storage_permission">Storage Permission</string>
+    <string name="camera_and_storage_permission"><![CDATA[Camera & Storage Permission]]></string>
+    <string name="settings">Settings</string>
+    <string name="camera_permission">Camera Permission</string>
 </resources>
