@@ -5,6 +5,26 @@ This Android library provides Kotlin extension functions that make run time perm
 ### Usage
 Most of the system permission are defined in *[AppPermission.kt](https://github.com/ajithvgiri/runtimepermission/blob/master/library/src/main/java/com/ajithvgiri/runtimepermissions/AppPermissions.kt)* class.
 
+Add it in your root build.gradle at the end of repositories:
+
+``` gradle
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
+
+Add the gradle dependency to your `app` module `build.gradle` file:
+
+``` gradle
+	dependencies {
+	        implementation 'com.github.ajithvgiri:runtimepermission:v1.1'
+	}
+```
+
+**Don't forget to add permissions in Manifest**
 ##### Single Permission
 
 ``` kotlin
