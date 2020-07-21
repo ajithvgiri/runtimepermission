@@ -5,6 +5,8 @@ This Android library provides Kotlin extension functions that make run time perm
 ### Usage
 Most of the system permission are defined in *[AppPermission.kt](https://github.com/ajithvgiri/runtimepermission/blob/master/library/src/main/java/com/ajithvgiri/runtimepermissions/AppPermissions.kt)* class.
 
+##### Single Permission
+
 ``` kotlin
 
     companion object {
