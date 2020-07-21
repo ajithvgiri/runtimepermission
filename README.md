@@ -9,9 +9,6 @@ Most of the system permission are defined in *[AppPermission.kt](https://github.
 
     companion object {
         private const val PERMISSION_REQUEST_CAMERA = 100
-        private const val PERMISSION_REQUEST_CONTACT = 101
-        private const val PERMISSION_REQUEST_STORAGE = 102
-        private const val PERMISSION_REQUEST_CAMERA_STORAGE = 103
     }
 
     // Single Permission
@@ -35,7 +32,30 @@ Most of the system permission are defined in *[AppPermission.kt](https://github.
         }
     }
 
+
+    //Permission Request Result
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        when (requestCode) {
+            PERMISSION_REQUEST_CAMERA -> if (grantResults.isNotEmpty()) {
+                val cameraPermissionAccepted =
+                    grantResults[0] == PackageManager.PERMISSION_GRANTED
+                if (cameraPermissionAccepted) {
+                    showMessage("Camera Permission Enabled")
+                } else {
+                    showMessage("Camera Permission Denied")
+                }
+            }
+        }
+    }
+    
+    private fun showMessage(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+
+
 ```
+
 
 
 
