@@ -2,6 +2,42 @@
 
 This Android library provides Kotlin extension functions that make run time permission handling easier and more concise. These extensions provide same implementation for permission handling in both Activities and Fragments.
 
+### Usage
+Most of the system permission are defined in *[AppPermission.kt](https://github.com/ajithvgiri/runtimepermission/blob/master/library/src/main/java/com/ajithvgiri/runtimepermissions/AppPermissions.kt)* class.
+
+``` kotlin
+
+    companion object {
+        private const val PERMISSION_REQUEST_CAMERA = 100
+        private const val PERMISSION_REQUEST_CONTACT = 101
+        private const val PERMISSION_REQUEST_STORAGE = 102
+        private const val PERMISSION_REQUEST_CAMERA_STORAGE = 103
+    }
+
+    // Single Permission
+    private fun askPermission(permission: String = PERMISSION_CAMERA, requestCode: Int = PERMISSION_REQUEST_CAMERA) {
+        checkRTPermission(permission) { result ->
+            when (result) {
+                CheckPermissionResult.PermissionGranted -> {
+                    showMessage("Permission Granted")
+                }
+                CheckPermissionResult.PermissionAsk -> {
+                    ActivityCompat.requestPermissions(this, arrayOf(PERMISSION_CAMERA), requestCode)
+                }
+                CheckPermissionResult.PermissionPreviouslyDenied -> {
+                    // Show some message for user why this permission is needed
+                    ActivityCompat.requestPermissions(this, arrayOf(PERMISSION_CAMERA), requestCode)
+                }
+                CheckPermissionResult.PermissionPermanentlyDenied -> {
+                    // Show action for navigating user to settings 
+                }
+            }
+        }
+    }
+
+```
+
+
 
 ## Licence
 ```
